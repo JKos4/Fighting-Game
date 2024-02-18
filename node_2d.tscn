@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://bd87o6u8u0jnk"]
+
+[ext_resource type="Texture2D" uid="uid://bv8df7deacx4x" path="res://tile001/na.png" id="1_hwank"]
+[ext_resource type="Script" path="res://tile001/Image.gd" id="2_4do14"]
+[ext_resource type="Script" path="res://PlayerCharacter1.gd" id="2_134rq"]
+[ext_resource type="Texture2D" uid="uid://c6hkgi31qn5yi" path="res://tile001/sprite_1.png" id="3_8qmw1"]
+[ext_resource type="Texture2D" uid="uid://oyxcy483mi06" path="res://tile001/sprite_2.png" id="4_rx05h"]
+[ext_resource type="Texture2D" uid="uid://b58bu8fiq7nel" path="res://menu.jpg" id="6_mm1ck"]
+[ext_resource type="Script" path="res://tile001/TextureRect2.gd" id="7_ke4xq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjq5q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8qmw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rx05h")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7542b"]
+size = Vector2(28.8, 25.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = 2560.0
+offset_bottom = 1438.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.450318, 0.453122)
+texture = ExtResource("1_hwank")
+script = ExtResource("2_4do14")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(0, -2)
+script = ExtResource("2_134rq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(136, 529)
+scale = Vector2(3.53333, 3.67778)
+sprite_frames = SubResource("SpriteFrames_vjq5q")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(160, 493)
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_7542b")
+
+[node name="Timer" type="Timer" parent="CharacterBody2D"]
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 768.0
+offset_bottom = 576.0
+texture = ExtResource("6_mm1ck")
+expand_mode = 1
+script = ExtResource("7_ke4xq")
